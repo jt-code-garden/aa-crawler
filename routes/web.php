@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\CrawlController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +14,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// initial Web Crawler user interface
+Route::get('/', [CrawlController::class, 'init']);
+
+// dispatch the Web Crawling "crawl" feature
+Route::post('/', [CrawlController::class, 'crawl']);
