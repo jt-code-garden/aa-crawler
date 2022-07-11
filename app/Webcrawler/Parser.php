@@ -77,9 +77,8 @@ class Parser
   {
     // xpath expression filters any <script> or <style> tags from the result
     $textNodes = $this->getElementTextContent('text()[not(parent::script) and not(parent::style)]');
-
     // trim text and remove empty nodes
-    return array_map('trim', array_filter($textNodes));
+    return array_values(array_filter(array_map('trim', $textNodes)));
   }
 
   /**
